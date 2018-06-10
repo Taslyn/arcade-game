@@ -21,24 +21,32 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };*/
 
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 // Enemies our player must avoid
 class Enemy {
     constructor() {
         this.sprite = 'images/enemy-bug.png';
-        this.dt = this.getRandomInt(100,900);
-    }
-    getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+        const startPositions = [60, 145, 230];
+        this.x = 0;
+        this.y = startPositions[getRandomInt(0,2)]; //60 145 230 (+85)
+        //this.dt = this.getRandomInt(100,900);
     }
     update(dt) {
-        setInterval(function drawNewPosition() {
+        /*setInterval(function drawNewPosition() {
             this.render();
-        }, dt);
+        }, dt);*/
     }
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 }
+
+/* about game field:
+for Player: 59 < y < 401; -1 < x < 401
+*/
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -46,6 +54,8 @@ class Enemy {
 class Player {
   constructor() {
     this.sprite = 'images/char-boy.png';
+    this.x = 300;
+    this.y = 400;
   }
   update(dt) {
   }
@@ -73,7 +83,15 @@ class Player {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
+let allEnemies = [];
+allEnemies.push(new Enemy());
+/*while (allEnemies.push()<10) {
+    setInterval(function() {
+        allEnemies.push(new Enemy());
+    }, 900);
+    console.log(allEnemies.push());
+}*/
+let player = new Player();
 
 
 // This listens for key presses and sends the keys to your
