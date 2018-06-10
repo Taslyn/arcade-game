@@ -28,16 +28,14 @@ function getRandomInt(min, max) {
 // Enemies our player must avoid
 class Enemy {
     constructor() {
-        this.sprite = 'images/enemy-bug.png';
         const startPositions = [60, 145, 230];
+        this.sprite = 'images/enemy-bug.png';
         this.x = 0;
         this.y = startPositions[getRandomInt(0,2)]; //60 145 230 (+85)
-        //this.dt = this.getRandomInt(100,900);
+        this.speed = getRandomInt(1,10);
     }
     update(dt) {
-        /*setInterval(function drawNewPosition() {
-            this.render();
-        }, dt);*/
+        this.x += this.speed;
     }
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -65,16 +63,16 @@ class Player {
   handleInput(direction) {
     switch(direction) {
         case 'left':
-            this.x--;
+            --this.x;
             break;
         case 'up':
-            this.y++;
+            ++this.y;
             break;
         case 'right':
-            this.x++;
+            ++this.x;
             break;
         case 'down':
-            this.y--;
+            --this.y;
             break;
     }
   }
@@ -84,13 +82,21 @@ class Player {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 let allEnemies = [];
-allEnemies.push(new Enemy());
-/*while (allEnemies.push()<10) {
-    setInterval(function() {
-        allEnemies.push(new Enemy());
-    }, 900);
-    console.log(allEnemies.push());
-}*/
+
+setInterval(function addEnemy() {
+    allEnemies.push(new Enemy());
+}, 1000);
+
+setInterval(function() {
+    allEnemies.forEach(function removeUnnecessaryEnemies(enemy, i) {
+        if (enemy.x > 600) {
+            console.log('Enemy number ' + i + ' is oor.')
+            allEnemies.splice(i,1);
+        }
+    })
+    console.log('Number of Enemies: ' + allEnemies.push());
+}, 5000);
+
 let player = new Player();
 
 
