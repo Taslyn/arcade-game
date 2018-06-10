@@ -52,8 +52,11 @@ for Player: 59 < y < 401; -1 < x < 401
 class Player {
   constructor() {
     this.sprite = 'images/char-boy.png';
+    this.initializePlayer();
+  }
+  initializePlayer() {
     this.x = 300;
-    this.y = 400;
+    this.y = 400; 
   }
   update(dt) {
   }
@@ -63,16 +66,26 @@ class Player {
   handleInput(direction) {
     switch(direction) {
         case 'left':
-            --this.x;
+            if (this.x > 0) {
+                this.x -= 100;
+            }
             break;
         case 'up':
-            ++this.y;
+            if (this.y > 60) {
+                this.y -= 85;
+            } else { //case when Player reached the water
+                this.initializePlayer();
+            }
             break;
         case 'right':
-            ++this.x;
+            if (this.x < 400) {
+                this.x += 100;
+            }
             break;
         case 'down':
-            --this.y;
+            if (this.y < 400) {
+                this.y += 85;
+            }
             break;
     }
   }
@@ -90,11 +103,11 @@ setInterval(function addEnemy() {
 setInterval(function() {
     allEnemies.forEach(function removeUnnecessaryEnemies(enemy, i) {
         if (enemy.x > 600) {
-            console.log('Enemy number ' + i + ' is oor.')
+            console.log('Enemy number ' + i + ' will be removed.')
             allEnemies.splice(i,1);
         }
     })
-    console.log('Number of Enemies: ' + allEnemies.push());
+    console.log('remaining number of Enemies: ' + allEnemies.push());
 }, 5000);
 
 let player = new Player();
@@ -109,6 +122,5 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-    console.log(allowedKeys[e.keyCode]);
-    //player.handleInput(allowedKeys[e.keyCode]);
+    player.handleInput(allowedKeys[e.keyCode]);
 });
