@@ -16,7 +16,7 @@ class Enemy {
         this.x += this.speed;
         // check for collision with player:
         if (this.y == player.y && this.x >= (player.x - 87) && this.x <= (player.x + 87)) {
-            player.initializePlayer(); //bug touches player at player.x - 78
+            player.initializePlayer(); 
         }
     }
     render() {
@@ -49,8 +49,13 @@ class Player {
         case 'up':
             if (this.y > 60) {
                 this.y -= 85;
-            } else { //case when Player reached the water
+            } else { 
+                // reset Player position and show star icon if Player reaches water (=wins the game):
                 this.initializePlayer();
+                star.show();
+                setTimeout(function() {
+                    star.hide();
+                },500);
             }
             break;
         case 'right':
@@ -64,6 +69,27 @@ class Player {
             }
             break;
     }
+  }
+}
+
+// the Star that will be displayed above the Character if the game is won:
+class Star  {
+  constructor() {
+    this.sprite = 'images/Star.png';
+    this.hide();
+  }
+  show() {
+    this.x = 200;
+    this.y = 315;
+  }
+  hide() {
+    this.x = 600;
+    this.y = 315;
+  }
+  update(dt) {
+  }
+  render() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
 }
 
@@ -82,12 +108,11 @@ setInterval(function() {
             allEnemies.splice(i,1);
         }
     })
-    if (allEnemies.push()>10) {
-        console.log('The number of enemies exploded!')
-    }
 }, 5000);
 
 let player = new Player();
+
+let star = new Star();
 
 
 document.addEventListener('keyup', function(e) {
