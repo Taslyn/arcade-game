@@ -1,6 +1,32 @@
-frontend-nanodegree-arcade-game
-===============================
+# Arcade Game
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+This project contains everything you need to play a classic Arcade Game in your browser.
+The goal of the game is to reach the water with your character. In order to do so, you have to avoid the bugs that cross the game board.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+## Project Information
+
+*Author:* Tabea Brodhagen
+
+*Version:* 11.06.2018
+
+## Table of Contents
+
+[1. Explanation of the Project](#1-explanation-of-the-project)
+
+[2. How to install the game](#2-how-to-install-the-game)
+
+[3. Browser Compatibility](#3-browser-compatibility)
+
+## 1. Explanation of the Project
+The game board consists of three different areas: 
+* the gras where the player can safely walk around
+* the pavement where the enemy bugs walk around
+* the water which is the player's goal
+The player character can move freely around the board. If he gets hit by a bug he will be teleported back to the starting position on the gras. If he manages to reach the water, the same will happen. The enemy bugs move with different speeds, so stay alert if you want to reach the water!
+
+## 2. How to install the game
+To install a local copy of the game you can clone this GitHub repository. How to do this is explained [here](https://help.github.com/articles/cloning-a-repository/). Afterwards, just open the HTML File *index.html* in your browser and you can play!
+
+## 3. Browser Compatibility
+
+This project was designed to work on Google Chrome and was not tested on any other browsers. It was build using ECMAScript 6 (ES6) and will probably not work on browsers that do not support ES6 yet. Since the layout of the game is not responsive, it is advised to play using a screen of sufficient size (a mobile phone will probably not work very well).
