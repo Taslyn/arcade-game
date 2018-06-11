@@ -33,3 +33,6 @@ To install a local copy of the game you can clone this GitHub repository. How to
 
 This project was designed to work on Google Chrome and was not tested on any other browsers. It was build using ECMAScript 6 (ES6) and will probably not work on browsers that do not support ES6. 
 Since the layout of the game is not responsive, it is advised to play using a screen of sufficient size (a mobile phone will probably not work very well).
+
+## Acknowledgements
+A part of the code was provided by Udacity.
