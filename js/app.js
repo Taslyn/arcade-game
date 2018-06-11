@@ -15,7 +15,7 @@ class Enemy {
     update(dt) {
         this.x += this.speed;
         // check for collision with player:
-        if (this.y == player.y && this.x >= (player.x-87) && this.x <= player.x) {
+        if (this.y == player.y && this.x >= (player.x - 87) && this.x <= (player.x + 87)) {
             player.initializePlayer(); //bug touches player at player.x - 78
         }
     }
@@ -31,7 +31,7 @@ class Player {
     this.initializePlayer();
   }
   initializePlayer() {
-    this.x = 300; 
+    this.x = 200; 
     this.y = 400;  
   }
   update(dt) {
@@ -79,11 +79,12 @@ setInterval(function addEnemy() {
 setInterval(function() {
     allEnemies.forEach(function removeUnnecessaryEnemies(enemy, i) {
         if (enemy.x > 600) {
-            console.log('Enemy number ' + i + ' will be removed.')
             allEnemies.splice(i,1);
         }
     })
-    console.log('remaining number of Enemies: ' + allEnemies.push());
+    if (allEnemies.push()>10) {
+        console.log('The number of enemies exploded!')
+    }
 }, 5000);
 
 let player = new Player();
