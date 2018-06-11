@@ -24,7 +24,7 @@ The game board consists of three different areas:
 * the water which is the player's goal
 
 Furthermore, you have the player character and the enemy bugs.
-The player character can move freely around the board. If he gets hit by a bug, he will be teleported back to the starting position on the gras. If he manages to reach the water, the same will happen. The enemy bugs move with different speeds, so stay alert if you want to reach the water!
+The player character can move freely around the board. If he gets hit by a bug, he will be teleported back to the starting position on the gras. If he manages to reach the water, the same will happen and a star will pop up above your character to indicate that you have won. The enemy bugs move with different speeds, so stay alert if you want to successfully reach the water!
 
 ## 2. How to install the game
 To install a local copy of the game you can clone this GitHub repository. How to do this is explained [here](https://help.github.com/articles/cloning-a-repository/). Afterwards, just open the HTML File *index.html* in your browser and you can play!
